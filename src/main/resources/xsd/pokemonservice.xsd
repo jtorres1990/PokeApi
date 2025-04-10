@@ -59,6 +59,7 @@
                 <xs:element name="baseExperience" type="xs:int"/>
                 <xs:element name="height" type="xs:int"/>
                 <xs:element name="abilities" type="tns:AbilityList" minOccurs="0"/>
+                <xs:element name="types" type="tns:TypeList" minOccurs="0"/>
                 <xs:element name="soundUrl" type="xs:string" minOccurs="0"/>
             </xs:sequence>
         </xs:complexType>
@@ -68,6 +69,50 @@
     <xs:complexType name="AbilityList">
         <xs:sequence>
             <xs:element name="ability" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="TypeList">
+        <xs:sequence>
+            <xs:element name="type" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Request: PokemonResumenRequest -->
+    <xs:element name="PokemonResumenRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long" minOccurs="0"/>
+                <xs:element name="pokemonName" type="xs:string" minOccurs="0"/>
+                <xs:element name="abilityName" type="xs:string" minOccurs="0"/>
+                <xs:element name="typeName" type="xs:string" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Response: PokemonResumenResponse -->
+    <xs:element name="PokemonResumenResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="resultados" type="tns:PokemonResumenList" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Lista de resultados -->
+    <xs:complexType name="PokemonResumenList">
+        <xs:sequence>
+            <xs:element name="pokemon" type="tns:PokemonResumen" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Resultado individual -->
+    <xs:complexType name="PokemonResumen">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="pokemonName" type="xs:string"/>
+            <xs:element name="abilityName" type="xs:string"/>
+            <xs:element name="typeName" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>
 

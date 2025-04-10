@@ -22,6 +22,11 @@ public class BuscarPokemonResponse {
     @XmlElement(name = "ability")
     private List<String> abilities;
 
+    @XmlElementWrapper(name = "types")
+    @XmlElement(name = "type")
+    private List<String> types;
+
+
     private String soundUrl;
 
 }

@@ -1,6 +1,5 @@
 package com.pokemon.pokeapi.model.dto;
 
-import lombok.Builder;
 import lombok.Data;
 import lombok.ToString;
 
@@ -14,6 +13,7 @@ public class PokemonDTO {
     private int baseExperience;
     private int height;
     private List<String> abilities;
+    private List<String> types;
     private String soundUrl;
 
 }

@@ -3,6 +3,7 @@ package com.pokemon.pokeapi.jpa.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+
 @Entity
 @Table(name = "pokemon")
 @Data

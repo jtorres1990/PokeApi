@@ -7,7 +7,7 @@ import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name = "pokemonResume")
+@Table(name = "pokemonresume")
 @Data
 public class PokemonResumeEntity {
 
@@ -15,12 +15,12 @@ public class PokemonResumeEntity {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "pokemonName")
+    @Column(name = "pokemonname")
     private String pokemonName;
 
-    @Column(name = "abilityName")
+    @Column(name = "abilityname")
     private String abilityName;
 
-    @Column(name = "typeName")
+    @Column(name = "typename")
     private String typeName;
 }

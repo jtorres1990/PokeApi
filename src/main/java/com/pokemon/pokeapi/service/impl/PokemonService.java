@@ -47,6 +47,11 @@ public class PokemonService implements IPokemonService {
             habilidades.add(nodo.get("ability").get("name").asText());
         }
         dto.setAbilities(habilidades);
+        List<String> types = new ArrayList<>();
+        for (JsonNode nodo : json.get("types")) {
+            types.add(nodo.get("type").get("name").asText());
+        }
+        dto.setTypes(types);
 
         // Extraer URL de sonido
         dto.setSoundUrl(json.path("cries").path("latest").asText());
@@ -61,6 +66,7 @@ public class PokemonService implements IPokemonService {
         resp.setHeight(dto.getHeight());
         resp.setAbilities(dto.getAbilities());
         resp.setSoundUrl(dto.getSoundUrl());
+        resp.setTypes(dto.getTypes());
         return resp;
     }
 
