@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://example.com/pokemonservice"
+           xmlns:tns="http://example.com/pokemonservice"
+           elementFormDefault="qualified">
+
+    <!-- Request para buscar todos -->
+    <xs:element name="BuscarTodosRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="offset" type="xs:int"/>
+                <xs:element name="limit" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:element name="BuscarPokemonRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="nombre" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Respuesta para buscar todos -->
+    <xs:element name="BuscarTodosResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="count" type="xs:int"/>
+                <xs:element name="next" type="xs:string" minOccurs="0"/>
+                <xs:element name="previous" type="xs:string" minOccurs="0"/>
+                <xs:element name="results" type="tns:PokemonList" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Lista de Pokémon básicos -->
+    <xs:complexType name="PokemonList">
+        <xs:sequence>
+            <xs:element name="pokemon" type="tns:PokemonBasic" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- DTO básico de Pokémon -->
+    <xs:complexType name="PokemonBasic">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="url" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- BuscarPokemonResponse -->
+    <xs:element name="BuscarPokemonResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:int"/>
+                <xs:element name="name" type="xs:string"/>
+                <xs:element name="baseExperience" type="xs:int"/>
+                <xs:element name="height" type="xs:int"/>
+                <xs:element name="abilities" type="tns:AbilityList" minOccurs="0"/>
+                <xs:element name="soundUrl" type="xs:string" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Lista de habilidades -->
+    <xs:complexType name="AbilityList">
+        <xs:sequence>
+            <xs:element name="ability" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

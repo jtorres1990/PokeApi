@@ -1,19 +1,15 @@
 package com.pokemon.pokeapi.model.mapper;
 
-
-import com.pokemon.pokeapi.jpa.entity.PokemonResumeEntity;
-import com.pokemon.pokeapi.model.dto.pokeapiclient.PokemonDetailDto;
-import com.pokemon.pokeapi.model.dto.soap.PokemonDto;
+import com.pokemon.pokeapi.jaxb.BuscarPokemonResponse;
+import com.pokemon.pokeapi.jaxb.BuscarTodosResponse;
+import com.pokemon.pokeapi.model.dto.PokemonDTO;
+import com.pokemon.pokeapi.model.dto.PokemonListResponseDTO;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
+import org.mapstruct.factory.Mappers;
 
 @Mapper(componentModel = "spring")
 public interface IPokemonMapper {
-
-    PokemonResumeEntity toEntity(PokemonDto pokemonDto);
-
-    PokemonDto toDto(PokemonResumeEntity pokemonEntity);
-
-    @Mapping(target = "abilityName", source = "ability.name")
-    PokemonDto toDtofromApi(PokemonDetailDto pokemonAbilityDTO);
+    IPokemonMapper INSTANCE = Mappers.getMapper(IPokemonMapper.class);
+    BuscarTodosResponse toBuscarTodosResponse(PokemonListResponseDTO dto);
+    BuscarPokemonResponse toBuscarPokemonResponse(PokemonDTO dto);
 }
